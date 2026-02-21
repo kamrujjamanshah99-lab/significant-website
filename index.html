@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Joya ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at center, #1e1e2f, #0f0f1a);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* STARFIELD */
+.star {
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {opacity:0.3;}
+    to {opacity:1;}
+}
+
+/* MAIN CARD */
+.card {
+    width:80%;
+    max-width:800px;
+    margin:100px auto;
+    padding:50px;
+    border-radius:25px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgba(255,255,255,0.1);
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(40px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+h1 {
+    text-align:center;
+    font-size:42px;
+    margin-bottom:30px;
+    background: linear-gradient(90deg,#ff7eb3,#65d6ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    font-size:18px;
+    line-height:1.9;
+    white-space: pre-line;
+}
+
+.buttons {
+    text-align:center;
+    margin-top:40px;
+}
+
+button {
+    padding:12px 35px;
+    border:none;
+    border-radius:30px;
+    margin:15px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.yes {
+    background: linear-gradient(90deg,#ff7eb3,#ff758c);
+    color:white;
+}
+
+.no {
+    background:#444;
+    color:white;
+}
+
+button:hover {
+    transform:scale(1.1);
+    box-shadow:0 0 20px rgba(255,255,255,0.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Joya ✨</h1>
+
+<p id="letter"></p>
+
+<div class="buttons">
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" onclick="sayNo()">No 🙂</button>
+</div>
+
+</div>
+
+<script>
+
+/* STAR CREATION */
+for(let i=0;i<150;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.top=Math.random()*100+"vh";
+    star.style.left=Math.random()*100+"vw";
+    star.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(star);
+}
+
+/* TYPEWRITER LETTER */
+const text = `Dear Joya,
+
+I hope this doesn't surprise you too much.
+
+I’ve been thinking for a long time about whether I should ever say this.
+Not because I wasn’t sure about my feelings —
+but because I respect you enough to not rush into your space carelessly.
+
+We are not classmates.
+We don't share daily routines.
+Yet somehow, every time I see you or think about you,
+there is a calm happiness that stays with me.
+
+It’s not loud.
+It’s not dramatic.
+It’s quiet… and real.
+
+I admire your presence.
+Your simplicity.
+The way you carry yourself.
+There’s something graceful about you that I cannot ignore.
+
+This isn’t an impulsive confession.
+It’s something I’ve carried in my heart carefully.
+
+I don’t expect anything.
+I don’t want to pressure you.
+I just wanted to be honest — respectfully.
+
+If you ever feel even a small possibility,
+I would love the chance to know you more.
+
+And if you don’t,
+I promise nothing changes.
+I will still respect you exactly the same.
+
+Your comfort will always matter more than my feelings.
+
+Whatever your answer is,
+thank you for unknowingly inspiring me to grow.
+
+— Ripon`;
+
+let i=0;
+function typeWriter(){
+    if(i<text.length){
+        document.getElementById("letter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,25);
+    }
+}
+typeWriter();
+
+/* YES RESPONSE */
+function sayYes(){
+    document.body.innerHTML = `
+    <div style="text-align:center;margin-top:200px;">
+    <h1 style="font-size:50px;color:#ff7eb3;">She Said YES 💖✨</h1>
+    <p style="font-size:20px;">This might be the beginning of something beautiful.</p>
+    </div>`;
+    document.body.style.background="linear-gradient(135deg,#ff7eb3,#65d6ce)";
+}
+
+/* NO RESPONSE */
+function sayNo(){
+    document.body.innerHTML = `
+    <div style="text-align:center;margin-top:200px;">
+    <h1>It was just a creative way to say hi 🙂</h1>
+    <p>No awkwardness. No pressure. Only respect.</p>
+    </div>`;
+    document.body.style.background="#111";
+}
+
+</script>
+
+</body>
+</html>
